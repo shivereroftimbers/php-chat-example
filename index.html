@@ -1,4 +1,4 @@
-<!--fork of repository https://github.com/CppComet/php-chat-example-->
+<!--fork of repo: https://github.com/CppComet/php-chat-example-->
 
 <!DOCTYPE HTML>
 <html>
@@ -13,40 +13,58 @@
         border-radius: 5px;
         box-shadow: 0 0 30px #555D50;
         padding: 5px;
+        width: 47vh;
         background-color: #444C40;
+        color: white;
+    }
+    .menu{
+        border: 1px solid white;
+        border-radius: 5px;
+        box-shadow: 0 0 30px #555D50;
+        background-color: rgb(140, 150, 150);
+        color: white;
     }
     textarea{
-        border: 1px solid white;
-        border-radius: 5px;
-        box-shadow: 0 0 30px #555D50;
-        background-color: rgb(140, 150, 150);
         resize: none;
         width: 35vh;
-        height: 7vh
+        height: 7vh;
     }
     .send{
-        border: 1px solid white;
-        border-radius: 5px;
-        box-shadow: 0 0 30px #555D50;
-        background-color: rgb(140, 150, 150);
-        height: 7vh;
+        height: 7.5vh;
         width: 7vh;
+        text-align: center;
+    }
+    .smol{
+        height: 3.2vh;
+        width: 3.2vh;
+        text-align: center;
+    }
+    .username{
+        border-radius: 5px;
+        width: 10vh;
     }
     </style>
 </head>
 <body>
 
-<div id="web_chat"></div> 
+<div id="web_chat"></div><br><br>
 
 
 
 <div>
- <input type="text" id="name"><br><br>
+ <table>
+    <tr>
+        <td rowspan=2><textarea maxlength="512" class="menu"      id="text" onkeypress="if(event.keyCode==13) {send();document.getElementById('text').value = ''};"></textarea></td>
+        <td>          <input    value="☺"       class="menu smol" type="button"></td>
+        <td rowspan=2><input    value="Send"    class="menu send" type="button" onclick="send();document.getElementById('text').value = '';"></td>
+    </tr>
+    <tr>
+        <td><input value="✉" class="menu smol" type="file" name="photo"></td>
+    </tr>
+ </table>
  
- <table><tr>
-    <td><textarea maxlength="512" id="text" onkeypress="if(event.keyCode==13) {send();document.getElementById('text').value = ''};"></textarea></td>
-    <td><input class="send" type="button" onclick="send();document.getElementById('text').value = '';" value="Send" ></td>
- </tr></table>
+ <input value="Anonymous" class="username" type="text" id="name">
+ 
 </div>
 
 <script type="text/javascript">
