@@ -1,3 +1,5 @@
+<!--fork of repository https://github.com/CppComet/php-chat-example-->
+
 <!DOCTYPE HTML>
 <html>
 <head> 
@@ -8,23 +10,46 @@
     <style>
     pre{
         border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 30px #555D50;
         padding: 5px;
-        background-color: #EEE;
+        background-color: #444C40;
+    }
+    textarea{
+        border: 1px solid white;
+        border-radius: 5px;
+        box-shadow: 0 0 30px #555D50;
+        background-color: rgb(140, 150, 150);
+        resize: none;
+        width: 35vh;
+        height: 7vh
+    }
+    .send{
+        border: 1px solid white;
+        border-radius: 5px;
+        box-shadow: 0 0 30px #555D50;
+        background-color: rgb(140, 150, 150);
+        height: 7vh;
+        width: 7vh;
     }
     </style>
 </head>
 <body>
 
-<div id="web_chat"></div>
+<div id="web_chat"></div> 
+
+
 
 <div>
- Name :<input type="text" id="name"><br><br>
- Text: <textarea id="text"></textarea><br>
- <input type="button" onclick="send();" value="send" ><br>
+ <input type="text" id="name"><br><br>
+ 
+ <table><tr>
+    <td><textarea maxlength="512" id="text" onkeypress="if(event.keyCode==13) {send();document.getElementById('text').value = ''};"></textarea></td>
+    <td><input class="send" type="button" onclick="send();document.getElementById('text').value = '';" value="Send" ></td>
+ </tr></table>
 </div>
 
 <script type="text/javascript">
-
 $(document).ready(function()
 { 
     cometApi.start({node:"app.comet-server.ru", dev_id:15 })
@@ -35,7 +60,6 @@ $(document).ready(function()
         $("#web_chat").append('<br>')
     })
 })
-
 function HtmlEncode(s)
 {
   var el = document.createElement("div");
@@ -43,25 +67,19 @@ function HtmlEncode(s)
   s = el.innerHTML;
   return s;
 }
-
     
 function send()
-{
+{   if(document.getElementById('text').value != 0){
    var name = $('#name').val();
    var text = $('#text').val();
    
    $.ajax({
         url: "https://comet-server.com/doc/CppComet/chat-example/chat.php",
         type: "POST", 
-        data:"text="+encodeURIComponent(text)+"&name="+encodeURIComponent(name)
+        data:"text="+encodeURIComponent(text)+"&name="+encodeURIComponent(name)   
    });
-}
-
-
-
-
-
-
+;
+}}
 </script>
 </body>
 </html>
