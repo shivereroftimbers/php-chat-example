@@ -1,3 +1,6 @@
+I forked this and now Imma bork it.
+
+<hr>
 
 :comet: An example of using the [CppComet](https://github.com/CppComet/comet-server) server to create a chat. For more information about CppComet, see [documentation](http://comet-server.org)
 
